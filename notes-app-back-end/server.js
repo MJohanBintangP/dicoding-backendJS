@@ -1,1 +1,2 @@
-console.log("test");
+/* eslint-disable linebreak-style */
+console.log('test');
