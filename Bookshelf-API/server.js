@@ -4,12 +4,10 @@ const { nanoid } = require("nanoid");
 const app = express();
 const PORT = 9000;
 
-// In-memory store for books
 const books = [];
 
 app.use(express.json());
 
-// Create a book
 app.post("/books", (req, res) => {
   const {
     name,
@@ -70,7 +68,6 @@ app.post("/books", (req, res) => {
   });
 });
 
-// Get all books (id, name, publisher)
 app.get("/books", (req, res) => {
   const list = books.map((b) => ({
     id: b.id,
@@ -83,7 +80,6 @@ app.get("/books", (req, res) => {
   });
 });
 
-// Get book detail by id
 app.get("/books/:bookId", (req, res) => {
   const { bookId } = req.params;
   const book = books.find((b) => b.id === bookId);
@@ -99,7 +95,6 @@ app.get("/books/:bookId", (req, res) => {
   });
 });
 
-// Update book by id
 app.put("/books/:bookId", (req, res) => {
   const { bookId } = req.params;
   const {
@@ -164,7 +159,6 @@ app.put("/books/:bookId", (req, res) => {
   });
 });
 
-// Delete book by id
 app.delete("/books/:bookId", (req, res) => {
   const { bookId } = req.params;
   const idx = books.findIndex((b) => b.id === bookId);
