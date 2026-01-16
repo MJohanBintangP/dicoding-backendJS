@@ -183,7 +183,7 @@ app.delete("/books/:bookId", (req, res) => {
 });
 
 const server = app.listen(PORT, () => {
-  console.log(`Bookshelf API running on port ${PORT}`);
+  console.log(`Bookshelf API running on http://localhost:${PORT}`);
 });
 
 server.on("error", (err) => {
