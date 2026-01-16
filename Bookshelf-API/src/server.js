@@ -8,6 +8,13 @@ const books = [];
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "success",
+    message: "Bookshelf API is running",
+  });
+});
+
 app.post("/books", (req, res) => {
   const {
     name,
@@ -175,6 +182,11 @@ app.delete("/books/:bookId", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Bookshelf API running on port ${PORT}`);
+});
+
+server.on("error", (err) => {
+  console.error("Server error:", err);
+  process.exit(1);
 });
